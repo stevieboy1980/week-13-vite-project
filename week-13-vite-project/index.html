@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Review App</title>
+
+    
+</head>
+<body>
+
+    
+    <!-- Main container for the entire app -->
+    <div class="container mt-5">
+        <h1 class="text-center text-success mb-5">Movie Review App</h1>
+
+        <!-- Review form for adding a new review -->
+        <form id="reviewForm">
+            <div class="form-group">
+                <input type="text" id="movieTitle" class="form-control" placeholder="Movie Title" required />
+            </div>
+            <div class="form-group">
+                <div id="starRating" class="mb-2">
+                    <i class="fas fa-star star" data-value="1"></i>
+                    <i class="fas fa-star star" data-value="2"></i>
+                    <i class="fas fa-star star" data-value="3"></i>
+                    <i class="fas fa-star star" data-value="4"></i>
+                    <i class="fas fa-star star" data-value="5"></i>
+                </div>
+                <input type="hidden" id="rating" required />
+            </div>
+            <div class="form-group">
+                <textarea id="reviewText" class="form-control" placeholder="Write your review here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+
+        <!-- Section to display reviews -->
+        <h2 class="mt-5">Reviews</h2>
+        <div id="reviewsList">
+          <!--Notification Pop-up-->
+          <div id="notification" class="alert alert-success fixed-top d-none" role="alert" style="z-index: 1050;"></div>
+
+                <!-- Comment section with buttons for actions -->
+                <div class="comment-container mb-2">
+                    <textarea class="form-control mb-2" placeholder="Add a comment..."></textarea>
+                    <button class="btn btn-light mb-2 add-comment-btn">Add Comment</button>
+                    <div class="comments-list">
+                        <div class="comment-item mb-2">
+                            <p>This is a comment.</p>
+                            <button class="btn btn-warning btn-sm edit-comment-btn">Edit</button>
+                            <button class="btn btn-danger btn-sm delete-comment-btn">Delete</button>
+                            <button class="btn btn-success btn-sm like-comment-btn">Like</button>
+                            <button class="btn btn-secondary btn-sm dislike-comment-btn">Dislike</button>
+                            <span class="likes-count">Likes: 0</span>
+                            <span class="dislikes-count">Dislikes: 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for editing an existing review -->
+    <div class="modal fade" id="editReviewModal" tabindex="-1" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editReviewModalLabel">Edit Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editReviewForm">
+                        <input type="hidden" id="editReviewId" />
+                        <div class="form-group">
+                            <input type="text" id="editMovieTitle" class="form-control" placeholder="Movie Title" required />
+                        </div>
+                        <div class="form-group">
+                            <div id="editStarRating" class="mb-2">
+                                <i class="fas fa-star star" data-value="1"></i>
+                                <i class="fas fa-star star" data-value="2"></i>
+                                <i class="fas fa-star star" data-value="3"></i>
+                                <i class="fas fa-star star" data-value="4"></i>
+                                <i class="fas fa-star star" data-value="5"></i>
+                            </div>
+                            <input type="hidden" id="editRating" required />
+                        </div>
+                        <div class="form-group">
+                            <textarea id="editReviewText" class="form-control" placeholder="Edit your review here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification for changes made -->
+    <div id="notification" class="alert alert-success fixed-top d-none" role="alert" style="z-index: 1050;">
+        Changes have been successfully saved!
+    </div>
+
+    <!-- Include your main script -->
+    <script type="module" src="/src/main.ts"></script>
+    
+</body>
+</html>
+
+
+

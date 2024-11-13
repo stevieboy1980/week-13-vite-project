@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    
+  </head>
+  <body>
+    <!-- Main container to hold the entire app content -->
+    <div class="container mt-5">
+      <h1 class="text-center">Movie Review App</h1> <!-- App title -->
+
+      <!-- Review form for adding a new review -->
+      <form id="reviewForm">
+        <!-- Movie title input field -->
+        <div class="form-group">
+          <input
+            type="text"
+            id="movieTitle"
+            class="form-control"
+            placeholder="Movie Title"
+            required
+          />
+        </div>
+
+        <!-- Star rating input with hidden field to store the selected rating -->
+        <div class="form-group">
+          <!-- Displaying clickable stars for rating -->
+          <div id="starRating" class="mb-2">
+            <!-- Each star is assigned a data-value for capturing the rating -->
+            <i class="fas fa-star star" data-value="1"></i>
+            <i class="fas fa-star star" data-value="2"></i>
+            <i class="fas fa-star star" data-value="3"></i>
+            <i class="fas fa-star star" data-value="4"></i>
+            <i class="fas fa-star star" data-value="5"></i>
+          </div>
+          <!-- Hidden input to store the selected rating -->
+          <input type="hidden" id="rating" required />
+        </div>
+
+        <!-- Text area for writing a detailed review -->
+        <div class="form-group">
+          <textarea
+            id="reviewText"
+            class="form-control"
+            placeholder="Write your review here..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Submit button for adding the review -->
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+
+      <!-- Section to display reviews -->
+      <h2 class="mt-5">Reviews</h2>
+      <!-- Reviews list where submitted reviews will be appended -->
+      <div id="reviewsList"></div>
+    </div>
+
+    <!-- Modal for editing an existing review -->
+    <div
+      class="modal fade"
+      id="editReviewModal"
+      tabindex="-1"
+      aria-labelledby="editReviewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- Modal title and close button -->
+            <h5 class="modal-title" id="editReviewModalLabel">Edit Review</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- Modal body containing the edit review form -->
+          <div class="modal-body">
+            <form id="editReviewForm">
+              <!-- Hidden field to track the ID of the review being edited -->
+              <input type="hidden" id="editReviewId" />
+
+              <!-- Movie title input field for editing -->
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="editMovieTitle"
+                  class="form-control"
+                  placeholder="Movie Title"
+                  required
+                />
+              </div>
+
+              <!-- Star rating input for editing the review's rating -->
+              <div class="form-group">
+                <div id="editStarRating" class="mb-2">
+                  <!-- Stars with the same logic as the add review form -->
+                  <i class="fas fa-star star" data-value="1"></i>
+                  <i class="fas fa-star star" data-value="2"></i>
+                  <i class="fas fa-star star" data-value="3"></i>
+                  <i class="fas fa-star star" data-value="4"></i>
+                  <i class="fas fa-star star" data-value="5"></i>
+                </div>
+                <!-- Hidden field to track the selected rating for the edit -->
+                <input type="hidden" id="editRating" required />
+              </div>
+
+              <!-- Text area to edit the review content -->
+              <div class="form-group">
+                <textarea
+                  id="editReviewText"
+                  class="form-control"
+                  placeholder="Edit your review here..."
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Save button to submit edited review -->
+              <button type="submit" class="btn btn-primary">
+                Save Changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for editing an existing comment -->
+    <div class="modal fade" id="editCommentModal" tabindex="-1" role="dialog" aria-labelledby="editCommentModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- Modal title and close button -->
+            <h5 class="modal-title" id="editCommentModalLabel">Edit Comment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- Modal body containing the edit comment form -->
+          <div class="modal-body">
+            <form id="editCommentForm">
+              <!-- Hidden fields to track the comment ID and the review it belongs to -->
+              <input type="hidden" id="editCommentId" />
+              <input type="hidden" id="editCommentReviewId" />
+
+              <!-- Text area for editing the comment content -->
+              <div class="form-group">
+                <textarea id="editCommentText" class="form-control" placeholder="Edit your comment" required></textarea>
+              </div>
+
+              <!-- Save button to submit edited comment -->
+              <button type="submit" class="btn btn-success">Save Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
+    
+  </body>
+</html>

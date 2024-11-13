@@ -1,0 +1,42 @@
+ /* Background settings for the body */
+ body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white; /* Default text color */
+}
+
+/* Styling the main container */
+.container {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  margin-top: 50px;
+}
+
+/* Styling individual review cards */
+.review-card {
+  margin-bottom: 20px; /* Space between review cards */
+  color: black; /* Text color inside reviews */
+}
+
+/* Styling for star rating icons */
+.star {
+  font-size: 2rem; /* Larger star icons */
+  cursor: pointer; /* Hand cursor to indicate clickability */
+  color: #ddd; /* Default star color */
+}
+
+/* Styling for selected stars */
+.star.selected {
+  color: gold; /* Gold color when star is selected */
+}
+
+/* Styling for comment containers under reviews */
+.comment-container {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border around comments */
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+}
